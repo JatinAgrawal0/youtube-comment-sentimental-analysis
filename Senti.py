@@ -1,6 +1,8 @@
 import csv
 import re
 import pandas as pd
+import nltk
+nltk.download('vader_lexicon')
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import plotly.express as px
 import plotly.graph_objects as go
