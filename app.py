@@ -14,7 +14,7 @@ def delete_non_matching_csv_files(directory_path, video_id):
         os.remove(os.path.join(directory_path, file_name))
 
 
-st.set_page_config(page_title='Jatin_Agrawal_20BCS6606', page_icon = None, initial_sidebar_state = 'auto')
+st.set_page_config(page_title='Jatin_Agrawal_20BCS6606', page_icon = 'logo.jpg', initial_sidebar_state = 'auto')
 #st.set_page_config(page_title=None, page_icon=None, layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.sidebar.title("Sentimental Analsis")
 st.sidebar.header("Enter YouTube Link")
