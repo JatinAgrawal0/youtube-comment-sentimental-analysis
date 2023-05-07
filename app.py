@@ -19,8 +19,15 @@ st.set_page_config(page_title='Jatin_Agrawal_20BCS6606', page_icon = None, initi
 st.sidebar.title("Sentimental Analsis")
 st.sidebar.header("Enter YouTube Link")
 youtube_link = st.sidebar.text_input("Link")
-
 directory_path = os.getcwd()
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 
 if youtube_link:
