@@ -17,7 +17,7 @@ This project provides a web application for sentiment analysis of YouTube commen
 
 2. Install the required dependencies:
 
-3. Obtain a YouTube Data API key from the [Google Cloud Console](https://console.cloud.google.com/) and replace `YOUR_API_KEY` in `app.py` with your actual API key.
+3. Obtain a YouTube Data API key from the [Google Cloud Console](https://console.cloud.google.com/) and replace `YOUR_API_KEY` in `YoutubeCommentScrapper.py` with your actual API key.
 
 4. Run the application:
 
