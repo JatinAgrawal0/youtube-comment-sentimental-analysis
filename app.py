@@ -1,7 +1,6 @@
 import streamlit as st
 import os
 from Senti import extract_video_id,analyze_sentiment,bar_chart,plot_sentiment
-from YoutubeCommentScrapper import save_video_comments_to_csv,get_channel_info,youtube,get_channel_id,get_video_stats
 
 
 
@@ -17,6 +16,11 @@ def delete_non_matching_csv_files(directory_path, video_id):
 st.set_page_config(page_title='Jatin_Agrawal_20BCS6606', page_icon = 'LOGO.png', initial_sidebar_state = 'auto')
 #st.set_page_config(page_title=None, page_icon=None, layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.sidebar.title("Sentimental Analsis")
+st.sidebar.header("Analyze Existing CSV")
+uploaded_csv = st.sidebar.file_uploader(
+    "Upload CSV with Comment or Xquik text column",
+    type=["csv"],
+)
 st.sidebar.header("Enter YouTube Link")
 youtube_link = st.sidebar.text_input("Link")
 directory_path = os.getcwd()
@@ -28,12 +32,30 @@ hide_st_style = """
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
+if uploaded_csv:
+    try:
+        results = analyze_sentiment(uploaded_csv)
+        st.title("Uploaded CSV Sentiment Results")
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.header("Positive Comments")
+            st.subheader(results['num_positive'])
+        with col2:
+            st.header("Negative Comments")
+            st.subheader(results['num_negative'])
+        with col3:
+            st.header("Neutral Comments")
+            st.subheader(results['num_neutral'])
+    except ValueError as error:
+        st.error(str(error))
 
-if youtube_link:
+elif youtube_link:
+    from YoutubeCommentScrapper import save_video_comments_to_csv,get_channel_info,youtube,get_channel_id,get_video_stats
+
     video_id = extract_video_id(youtube_link)
-    channel_id = get_channel_id(video_id)
     if video_id:
-        st.sidebar.write("The video ID is:", video_id)     
+        channel_id = get_channel_id(video_id)
+        st.sidebar.write("The video ID is:", video_id)
         csv_file = save_video_comments_to_csv(video_id)
         delete_non_matching_csv_files(directory_path,video_id)
         st.sidebar.write("Comments saved to CSV!")

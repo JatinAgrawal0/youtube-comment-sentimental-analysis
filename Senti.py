@@ -1,4 +1,3 @@
-import csv
 import re
 import pandas as pd
 import nltk
@@ -9,6 +8,7 @@ import plotly.graph_objects as go
 from colorama import Fore, Style
 from typing import Dict
 import streamlit as st
+from csv_comments import load_comments_from_csv
 
 def extract_video_id(youtube_link):
     video_id_regex = r"^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu.be\/)([a-zA-Z0-9_-]{11})"
@@ -23,12 +23,7 @@ def analyze_sentiment(csv_file):
     # Initialize the sentiment analyzer
     sid = SentimentIntensityAnalyzer()
 
-    # Read in the YouTube comments from the CSV file
-    comments = []
-    with open(csv_file, 'r', encoding='utf-8-sig') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            comments.append(row['Comment'])
+    comments = load_comments_from_csv(csv_file)
 
     # Count the number of neutral, positive, and negative comments
     num_neutral = 0
