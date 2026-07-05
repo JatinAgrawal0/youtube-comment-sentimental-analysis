@@ -6,6 +6,7 @@ This project provides a web application for sentiment analysis of YouTube commen
 
 - Extracts the video ID from a YouTube link.
 - Retrieves comments from the specified YouTube video and saves them to a CSV file. 💬📑
+- Accepts existing comment CSVs with `Comment`, `comments`, or Xquik-style `text` columns.
 - Performs sentiment analysis on the comments using the VADER (Valence Aware Dictionary and sEntiment Reasoner) sentiment analysis tool. 😃😠😐
 - Generates bar charts and scatter plots to visualize the sentiment analysis results. 📊📈
 - Retrieves video and channel information from the YouTube API. 📺🔍
@@ -28,9 +29,11 @@ This project provides a web application for sentiment analysis of YouTube commen
 
 2. Enter a valid YouTube link in the sidebar. 🔗
 
-3. Wait for the application to retrieve the video and channel information, save the comments to a CSV file, perform sentiment analysis, and display the results. ⌛
+3. Or upload an existing CSV with a `Comment`, `comments`, or `text` column.
 
-4. Explore the sentiment analysis results, video information, and channel information. 📈📺
+4. Wait for the application to retrieve or load comments, perform sentiment analysis, and display the results. ⌛
+
+5. Explore the sentiment analysis results, video information, and channel information. 📈📺
 
 ## Contributing 🤝
 
